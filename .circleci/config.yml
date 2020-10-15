@@ -3,11 +3,6 @@ version: 2.1
 orbs:
   maven: circleci/maven@1.0.2
 
-workflows:
-  maven_test:
-    jobs:
-      - maven/test # checkout, build, test, and upload test results
-
 dependencies:
   override:
     - mvn -DskipTests clean install dependency:resolve-plugins dependency:go-offline
@@ -21,3 +16,9 @@ deployment:
     branch: master
     commands:
       - mvn -s .circleci.settings.xml -DskipTests deploy
+
+workflows:
+  maven_test:
+    jobs:
+      - maven/test # checkout, build, test, and upload test results
+
