@@ -3,13 +3,13 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <servers>
         <server>
-            <username>${USER_NAME}</username>
-            <password>${USER_PASSWORD}</password>
+            <username>${env.USER_NAME}</username>
+            <password>${env.USER_PASSWORD}</password>
             <id>central</id>
         </server>
         <server>
-            <username>${USER_NAME}</username>
-            <password>${USER_PASSWORD}</password>
+            <username>${env.USER_NAME}</username>
+            <password>${env.USER_PASSWORD}</password>
             <id>snapshots</id>
         </server>
     </servers>
