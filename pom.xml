@@ -15,14 +15,14 @@
     <name>mssc-beer-inventory-service</name>
     <description>MSSC Beer Inventory Service</description>
 
-    <repositories>
+<!--    <repositories>
         <repository>
             <id>jfrog-snapshot</id>
-            <url>https://stech.jfrog.io/artifactory/libs-snapshot/</url>
+            <url>https://stech.jfrog.io/artifactory/jfrog-repo/</url>
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
         </repository>
-    </repositories>
+    </repositories>-->
 
 </project>
