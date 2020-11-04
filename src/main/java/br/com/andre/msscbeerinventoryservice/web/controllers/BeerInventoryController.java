@@ -1,6 +1,7 @@
 package br.com.andre.msscbeerinventoryservice.web.controllers;
 
 import br.com.andre.msscbeerinventoryservice.repositories.BeerInventoryRepository;
+import br.com.andre.msscbeerinventoryservice.services.BeerInventorySerivce;
 import br.com.andre.msscbeerinventoryservice.web.mappers.BeerInventoryMapper;
 import br.com.andre.msscbeerinventoryservice.web.model.BeerInventoryDto;
 import lombok.RequiredArgsConstructor;
@@ -18,16 +19,11 @@ import java.util.stream.Collectors;
 @RestController
 public class BeerInventoryController {
 
-    private final BeerInventoryRepository beerInventoryRepository;
-    private final BeerInventoryMapper beerInventoryMapper;
+    private final BeerInventorySerivce beerInventorySerivce;
 
     @GetMapping("api/v1/beer/{beerId}/inventory")
     List<BeerInventoryDto> listBeersById(@PathVariable UUID beerId) {
-        log.debug("Finding Inventory for beerId:" + beerId);
 
-        return beerInventoryRepository.findAllByBeerId(beerId)
-                .stream()
-                .map(beerInventoryMapper::beerInventoryToBeerInventoryDto)
-                .collect(Collectors.toList());
+        return beerInventorySerivce.findAllByBeerId(beerId);
     }
 }
