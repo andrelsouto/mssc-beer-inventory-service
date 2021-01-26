@@ -34,7 +34,7 @@ public class JmsConfig {
         converter.setTargetType(MessageType.TEXT);
         converter.setObjectMapper(objectMapper);
         converter.setTypeIdMappings(typeIdMappings);
-        converter.setTypeIdPropertyName("JMS_TYPE");
+        converter.setTypeIdPropertyName("_type");
         return converter;
     }
 

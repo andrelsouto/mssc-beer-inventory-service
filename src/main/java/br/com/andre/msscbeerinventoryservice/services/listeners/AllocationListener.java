@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class AllocationListener {
 
-    private JmsTemplate jmsTemplate;
+    private final JmsTemplate jmsTemplate;
     private final AllocationService allocationService;
 
     @JmsListener(destination = JmsConfig.ALLOCATE_ORDER_QUEUE)
