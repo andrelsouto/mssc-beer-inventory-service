@@ -29,16 +29,16 @@ public class AllocationServiceImpl implements AllocationService {
 
         beerOrderDto.getBeerOrderLines().forEach(beerOrderLine -> {
             if ((((beerOrderLine.getOrderQuantity() != null ? beerOrderLine.getOrderQuantity() : 0)
-                - (beerOrderLine.getQuantityAllocated() != null ? beerOrderLine.getQuantityAllocated() :0)) > 0)) {
+                    - (beerOrderLine.getQuantityAllocated() != null ? beerOrderLine.getQuantityAllocated() : 0)) > 0)) {
                 allocateBeerOrderLine(beerOrderLine);
             }
             totalOrdered.set(totalOrdered.get() + beerOrderLine.getOrderQuantity());
             totalAllocated.set(totalAllocated.get() + (beerOrderLine.getQuantityAllocated() != null ? beerOrderLine.getQuantityAllocated() : 0));
 
         });
-            log.debug("Total Ordered: " + totalOrdered.get() + "\nTotal Allocated: " + totalAllocated.get());
+        log.debug("Total Ordered: " + totalOrdered.get() + "\nTotal Allocated: " + totalAllocated.get());
 
-            return totalOrdered.get() == totalAllocated.get();
+        return totalOrdered.get() == totalAllocated.get();
     }
 
     @Override
@@ -71,7 +71,7 @@ public class AllocationServiceImpl implements AllocationService {
                 beerInventory.setQuantityOnHand(inventory);
 
                 beerInventoryRepository.save(beerInventory);
-            } else if(inventory >= 0) {
+            } else if (inventory >= 0) {
                 beerOrderLine.setQuantityAllocated(allocatedQty + inventory);
                 beerInventory.setQuantityOnHand(0);
 
