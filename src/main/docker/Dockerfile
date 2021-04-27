@@ -1,11 +1,11 @@
-FROM openjdk:11-jre-slim as builder
+FROM stec.jfrog.io/beerworks/openjdk:11-jre-slim as builder
 WORKDIR application
-ADD target/mssc-beer-inventory-service-0.0.1-SNAPSHOT.jar mssc-beer-inventory-service-0.0.1-SNAPSHOT.jar
-RUN java -Djarmode=layertools -jar mssc-beer-inventory-service-0.0.1-SNAPSHOT.jar extract
+ADD maven/${project.build.finalName}.jar ${project.build.finalName}.jar
+RUN java -Djarmode=layertools -jar ${project.build.finalName}.jar extract
 
 FROM openjdk:11-jre-slim
-LABEL PROJECT_NAME=teste2 \
-      PROJECT=reste2
+LABEL PROJECT_NAME=${project.artifactId} \
+      PROJECT=${project.id}
 
 EXPOSE 8080
 
